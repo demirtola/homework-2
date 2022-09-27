@@ -1,3 +1,2 @@
 INDEX VERSION 1.131+D:\programing\java\kodlama io\homework 2\.metadata\.plugins\org.eclipse.jdt.core
-718126161.index
 1865797976.index
