@@ -1,10 +1,48 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>
+from math import *
+
+class f():
+    def __init__(self, y, x, b):
+        self.y = y
+        self.x = x
+        self.b = b
+    def __init__(self, x1, y1, x2, y2 = 0):
+        if(y2 == 0):
+            self.y = x1
+            self.x = y1
+            self.b = x2
+        else:
+            self.y = 1
+            self.x = (y2 - y1) / (x2 - x1)
+            self.b = (self.y * y1) - (self.x * x1)
+    def __str__(self):
+        return "{0}y = {1}x + {2}".format(self.y, self.x, self.b)
+
+    def solve(self, x):
+        if(self.y == 1):
+            return (self.x * x) + self.b
+        k = 1 / self.y
+        return ((self.x * k) * x) + (self.b * k)
+
+    def cross_point(f1, f2):
+        if(f1.x == f2.x):
+            return None
+        x = (f2.b - f1.b) / (f1.x - f2.x)
+        y = f1.solve(x)
+        return(x,y)
+
+
+myf = f(2,1,6,3)
+myf = f(1,4,7)
+otf = f(1,1,2)
+degree = 90
+egim = tan(degree * pi / 180)
+gridf = f(1, egim, 0)
+for i in range(50):
+    print(f.cross_point(myf, gridf))
+    gridf.b += 1 * cos(atan(gridf.x))
+print(myf)
+print(gridf)
+
+
+
+#print(slope_intercept_form(5,5, 10, 12)) 
